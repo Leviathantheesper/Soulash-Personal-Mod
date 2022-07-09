@@ -1,0 +1,287 @@
+{
+	"ability_user": [
+		54,
+		156,
+		157,
+		167
+	],
+	"artificial_intelligence": {
+		"allies": [
+			23
+		],
+		"allow_production": [],
+		"behaviors": [
+			18
+		],
+		"enemies": [
+			5
+		]
+	},
+	"components": [
+		"ability_user",
+		"actor",
+		"artificial_intelligence",
+		"collidable",
+		"dialogues",
+		"equipment",
+		"experience_gainer",
+		"fighter",
+		"glyph",
+		"health",
+		"humanoid",
+		"minimap_pixel",
+		"moveable",
+		"name",
+		"on_destruction",
+		"position_2d",
+		"sight",
+		"stamina",
+		"statistics",
+		"tags"
+	],
+	"corpse": [],
+	"description": "The blood is life, therefore Sangre is an essential (though rarely seen) member of the pantheon. Mortals make bloody sacrifices in his name upon hidden altars in all corners of the world, despite his only known patrons being the humble butchers. Legend has it, that he unleashed vampires upon the world of men when his elven love was murdered and drained of her blood by mages serving the Snake Goddess. He is the husband of Vedna, father of brothers Rhaaos and Ulnos, and your grandson.",
+	"dialogues": [
+		1020
+	],
+	"equipment": {
+		"belt": [
+			{
+				"chance": 1.0,
+				"id": 863,
+				"name": "Decorated Belt",
+				"stack": 1
+			}
+		],
+		"head_armor": [
+			{
+				"chance": 1.0,
+				"id": 392,
+				"name": "Diadem",
+				"stack": 1
+			}
+		],
+		"head_cloth": [
+			{
+				"chance": 1.0,
+				"id": 864,
+				"name": "Decorated Collar",
+				"stack": 1
+			}
+		],
+		"legs_cloth": [
+			{
+				"chance": 1.0,
+				"id": 323,
+				"name": "Tights",
+				"stack": 1
+			}
+		],
+		"right_hand": [
+			{
+				"chance": 1.0,
+				"id": 772,
+				"name": "Glave",
+				"stack": 1
+			}
+		]
+	},
+	"experience_gainer": {
+		"exp": 1120014,
+		"level": 14
+	},
+	"fighter": {
+		"attackNames": null
+	},
+	"glyph": {
+		"frames": [
+			{
+				"color": [
+					178,
+					37,
+					37
+				],
+				"delay": 0,
+				"index": 163
+			}
+		],
+		"random_frame_start": false
+	},
+	"health": 1656,
+	"id": 907,
+	"minimap_pixel": [
+		178,
+		37,
+		37
+	],
+	"moveable": {
+		"speed": 0.800000011920929
+	},
+	"name": "Sangre, God of Blood",
+	"on_destruction": {
+		"abilities": [
+			156,
+			157
+		],
+		"change_entities_globally": [
+			{
+				"from": 43,
+				"to": [
+					909
+				]
+			},
+			{
+				"from": 608,
+				"to": [
+					910
+				]
+			},
+			{
+				"from": 37,
+				"to": [
+					912
+				]
+			},
+			{
+				"from": 32,
+				"to": [
+					911
+				]
+			},
+			{
+				"from": 425,
+				"to": [
+					913
+				]
+			},
+			{
+				"from": 57,
+				"to": [
+					914
+				]
+			},
+			{
+				"from": 54,
+				"to": [
+					915
+				]
+			},
+			{
+				"from": 607,
+				"to": [
+					916
+				]
+			},
+			{
+				"from": 228,
+				"to": [
+					946
+				]
+			},
+			{
+				"from": 429,
+				"to": [
+					1089
+				]
+			},
+			{
+				"from": 676,
+				"to": [
+					947
+				]
+			},
+			{
+				"from": 611,
+				"to": [
+					1090
+				]
+			},
+			{
+				"from": 252,
+				"to": [
+					948
+				]
+			},
+			{
+				"from": 263,
+				"to": [
+					629
+				]
+			},
+			{
+				"from": 1073,
+				"to": [
+					1074
+				]
+			},
+			{
+				"from": 734,
+				"to": [
+					1087
+				]
+			},
+			{
+				"from": 735,
+				"to": [
+					1088
+				]
+			}
+		],
+		"change_weather": [
+			{
+				"from": 1,
+				"to": 5
+			}
+		],
+		"destroy_entities_globally": [],
+		"disable_day": false,
+		"disable_fatigue": false,
+		"disable_hearing": false,
+		"disable_night": false,
+		"drinkable_blood": true,
+		"enable_teleport": false,
+		"infinite_crafting_durability": false,
+		"move_player": {
+			"x": -10000000,
+			"y": -10000000,
+			"z": -10000000
+		},
+		"recipes": [],
+		"reduce_durability_globally": 0,
+		"trigger_animation": 10,
+		"trigger_weather": null,
+		"trigger_weather_now": false
+	},
+	"sight": {
+		"infravision": false,
+		"range": 10,
+		"threesixty": false
+	},
+	"statistics": {
+		"dexterity": [
+			100,
+			110
+		],
+		"endurance": [
+			54,
+			60
+		],
+		"intelligence": [
+			100,
+			110
+		],
+		"strength": [
+			41,
+			45
+		],
+		"willpower": [
+			55,
+			60
+		]
+	},
+	"tags": [
+		4,
+		31,
+		23
+	]
+}

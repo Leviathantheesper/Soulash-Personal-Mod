@@ -1,0 +1,80 @@
+{
+	"components": [
+		"glyph",
+		"item",
+		"liquid_source",
+		"minimap_pixel",
+		"name",
+		"position_2d",
+		"producer",
+		"value",
+		"weight"
+	],
+	"description": "The scorched body of a kavian.",
+	"glyph": {
+		"frames": [
+			{
+				"color": [
+					149,
+					96,
+					248
+				],
+				"delay": 0,
+				"index": 213
+			}
+		],
+		"random_frame_start": false
+	},
+	"id": 733,
+	"item": {
+		"image": 134,
+		"type": 18
+	},
+	"liquid_source": {
+		"limit": 52,
+		"type": 4
+	},
+	"minimap_pixel": [
+		149,
+		96,
+		248
+	],
+	"name": "Kavian Corpse",
+	"producer": {
+		"products": {
+			"13": [
+				{
+					"amount": [
+						1,
+						1
+					],
+					"id": 55,
+					"percent_chance": 100
+				}
+			],
+			"2": [
+				{
+					"amount": [
+						3,
+						4
+					],
+					"id": 318,
+					"percent_chance": 100
+				}
+			],
+			"3": [
+				{
+					"amount": [
+						5,
+						10
+					],
+					"id": 828,
+					"percent_chance": 100
+				}
+			]
+		},
+		"time": 0
+	},
+	"value": 0,
+	"weight": 99.0
+}

@@ -1,0 +1,138 @@
+{
+	"artificial_intelligence": {
+		"allies": [
+			1
+		],
+		"allow_production": [],
+		"behaviors": [
+			17
+		],
+		"enemies": [
+			5
+		]
+	},
+	"components": [
+		"actor",
+		"artificial_intelligence",
+		"collidable",
+		"dialogues",
+		"equipment",
+		"experience_gainer",
+		"fighter",
+		"glyph",
+		"health",
+		"humanoid",
+		"minimap_pixel",
+		"moveable",
+		"name",
+		"position_2d",
+		"sight",
+		"stamina",
+		"statistics",
+		"tags"
+	],
+	"corpse": 25,
+	"description": "Placeholder",
+	"dialogues": [
+		124,
+		125
+	],
+	"equipment": {
+		"left_hand": [
+			{
+				"chance": 1.0,
+				"id": 400,
+				"name": "Buckler",
+				"stack": 1
+			}
+		],
+		"legs_armor": [
+			{
+				"chance": 1.0,
+				"id": 439,
+				"name": "Brass Greaves",
+				"stack": 1
+			}
+		],
+		"right_hand": [
+			{
+				"chance": 1.0,
+				"id": 78,
+				"name": "Sword",
+				"stack": 1
+			}
+		],
+		"torso_armor": [
+			{
+				"chance": 1.0,
+				"id": 395,
+				"name": "Copper Armor",
+				"stack": 1
+			}
+		]
+	},
+	"experience_gainer": {
+		"exp": 4559,
+		"level": 4
+	},
+	"fighter": {
+		"attackNames": null
+	},
+	"glyph": {
+		"frames": [
+			{
+				"color": [
+					224,
+					172,
+					105
+				],
+				"delay": 0,
+				"index": 131
+			}
+		],
+		"random_frame_start": false
+	},
+	"health": 1118,
+	"id": 215,
+	"minimap_pixel": [
+		224,
+		172,
+		105
+	],
+	"moveable": {
+		"speed": 1.0
+	},
+	"name": "Human Soldier",
+	"sight": {
+		"ignore_infra_penalty": false,
+		"infravision": false,
+		"range": 10,
+		"threesixty": false
+	},
+	"statistics": {
+		"dexterity": [
+			14,
+			17
+		],
+		"endurance": [
+			15,
+			19
+		],
+		"intelligence": [
+			10,
+			14
+		],
+		"strength": [
+			18,
+			23
+		],
+		"willpower": [
+			11,
+			15
+		]
+	},
+	"tags": [
+		1,
+		9
+	]
+}
