@@ -27,21 +27,21 @@ def damage_randomize():
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
         counter+=1
-        json=''
+        jsons=''
         rewrite=True
         with open(filename,'r+') as file:
-            json=file.read()
+            jsons=file.read()
             var=10*random.random()
             stat_name="dmg_max"
             da_stat="\""+stat_name+"\""
             pattern=da_stat+": [0-9]+"
-            reg=re.search(pattern, json)
+            reg=re.search(pattern, jsons)
             try:
                 line=reg.group(0)
                 statstring=re.search("[0-9]+", line).group(0)
                 stat_number=int(var*int(statstring))
                 new_line=re.sub("[0-9]+",str(stat_number),line)
-                json=json.replace(line,new_line)
+                jsons=jsons.replace(line,new_line)
             except: # pylint: disable=bare-except
                 print("Failed to mod ",stat_name," in ",filename)
                 rewrite=False
@@ -49,20 +49,20 @@ def damage_randomize():
             stat_name="dmg_min"
             da_stat="\""+stat_name+"\""
             pattern=da_stat+": [0-9]+"
-            reg=re.search(pattern, json)
+            reg=re.search(pattern, jsons)
             try:
                 line=reg.group(0)
                 statstring=re.search("[0-9]+", line).group(0)
                 stat_number=int(var*int(statstring))
                 new_line=re.sub("[0-9]+",str(stat_number),line)
-                json=json.replace(line,new_line)
+                jsons=jsons.replace(line,new_line)
             except: # pylint: disable=bare-except
                 print("Failed to mod ",stat_name," in ",filename)
                 rewrite=False
             file.close()
         if rewrite:
             with open(filename,'w') as file:
-                file.write(json)
+                file.write(jsons)
                 file.close()
 def exp_randomize():
     """
@@ -83,28 +83,28 @@ def exp_randomize():
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
         counter+=1
-        json=''
+        jsons=''
         rewrite=True
         with open(filename,'r+') as file:
-            json=file.read()
+            jsons=file.read()
             var=0.5+4.5*random.random()
             stat_name="exp"
             da_stat="\""+stat_name+"\""
             pattern=da_stat+": [0-9]+"
-            reg=re.search(pattern, json)
+            reg=re.search(pattern, jsons)
             try:
                 line=reg.group(0)
                 statstring=re.search("[0-9]+", line).group(0)
                 stat_number=int(var*int(statstring))
                 new_line=re.sub("[0-9]+",str(stat_number),line)
-                json=json.replace(line,new_line)
+                jsons=jsons.replace(line,new_line)
             except: # pylint: disable=bare-except
                 print("Failed to mod ",stat_name," in ",filename)
                 rewrite=False
             file.close()
         if rewrite:
             with open(filename,'w') as file:
-                file.write(json)
+                file.write(jsons)
                 file.close()
 def health_randomize():
     """
@@ -125,28 +125,28 @@ def health_randomize():
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
         counter+=1
-        json=''
+        jsons=''
         rewrite=True
         with open(filename,'r+') as file:
-            json=file.read()
+            jsons=file.read()
             var=0.5+7.5*random.random()
             stat_name="health"
             da_stat="\""+stat_name+"\""
             pattern=da_stat+": [0-9]+"
-            reg=re.search(pattern, json)
+            reg=re.search(pattern, jsons)
             try:
                 line=reg.group(0)
                 statstring=re.search("[0-9]+", line).group(0)
                 stat_number=int(var*int(statstring))
                 new_line=re.sub("[0-9]+",str(stat_number),line)
-                json=json.replace(line,new_line)
+                jsons=jsons.replace(line,new_line)
             except: # pylint: disable=bare-except
                 print("Failed to mod ",stat_name," in ",filename)
                 rewrite=False
             file.close()
         if rewrite:
             with open(filename,'w') as file:
-                file.write(json)
+                file.write(jsons)
                 file.close()
 def dur_randomize():
     """
@@ -167,28 +167,28 @@ def dur_randomize():
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
         counter+=1
-        json=''
+        jsons=''
         rewrite=True
         with open(filename,'r+') as file:
-            json=file.read()
+            jsons=file.read()
             var=0.5+4.5*random.random()
             stat_name="durability"
             da_stat="\""+stat_name+"\""
             pattern=da_stat+": [0-9]+"
-            reg=re.search(pattern, json)
+            reg=re.search(pattern, jsons)
             try:
                 line=reg.group(0)
                 statstring=re.search("[0-9]+", line).group(0)
                 stat_number=int(var*int(statstring))
                 new_line=re.sub("[0-9]+",str(stat_number),line)
-                json=json.replace(line,new_line)
+                jsons=jsons.replace(line,new_line)
             except: # pylint: disable=bare-except
                 print("Failed to mod ",stat_name," in ",filename)
                 rewrite=False
             file.close()
         if rewrite:
             with open(filename,'w') as file:
-                file.write(json)
+                file.write(jsons)
                 file.close()
 def nutr_randomize():
     """
@@ -209,28 +209,28 @@ def nutr_randomize():
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
         counter+=1
-        json=''
+        jsons=''
         rewrite=True
         with open(filename,'r+') as file:
-            json=file.read()
+            jsons=file.read()
             var=0.5+1.5*random.random()
             stat_name="nutrition"
             da_stat="\""+stat_name+"\""
             pattern=da_stat+": [0-9]+"
-            reg=re.search(pattern, json)
+            reg=re.search(pattern, jsons)
             try:
                 line=reg.group(0)
                 statstring=re.search("[0-9]+", line).group(0)
                 stat_number=int(var*int(statstring))
                 new_line=re.sub("[0-9]+",str(stat_number),line)
-                json=json.replace(line,new_line)
+                jsons=jsons.replace(line,new_line)
             except: # pylint: disable=bare-except
                 print("Failed to mod ",stat_name," in ",filename)
                 rewrite=False
             file.close()
         if rewrite:
             with open(filename,'w') as file:
-                file.write(json)
+                file.write(jsons)
                 file.close()
 def liquidsources_randomize():
     """
@@ -251,17 +251,17 @@ def liquidsources_randomize():
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
         counter+=1
-        json=''
+        jsons=''
         rewrite=True
         with open(filename,'r+') as file:
-            json=file.read()
+            jsons=file.read()
             var=0.5+1.5*random.random()
             stat_name="liquid_source"
             da_stat="\""+stat_name+"\""
             sub_stat_name="limit"
             da_sub_stat="\""+sub_stat_name+"\""
-            pattern=da_stat+":\s[{]\n(.*\n)*\t*"+da_sub_stat+": [0-9]+"
-            reg=re.search(pattern, json)
+            pattern=da_stat+r":\s[{]\n(.*\n)*\t*"+da_sub_stat+": [0-9]+"
+            reg=re.search(pattern, jsons)
             try:
                 lines=reg.group(0)
                 splines=lines.splitlines()
@@ -271,14 +271,14 @@ def liquidsources_randomize():
                 line=re.sub("[0-9]+",str(stat_number),line)
                 splines[len(splines)-1]=line
                 new_lines="\n".join(splines)
-                json=json.replace(lines,new_lines)
+                jsons=jsons.replace(lines,new_lines)
             except: # pylint: disable=bare-except
                 print("Failed to mod ",stat_name," in ",filename)
                 rewrite=False
             file.close()
         if rewrite:
             with open(filename,'w') as file:
-                file.write(json)
+                file.write(jsons)
                 file.close()
 def weight_randomize():
     """
@@ -299,28 +299,28 @@ def weight_randomize():
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
         counter+=1
-        json=''
+        jsons=''
         rewrite=True
         with open(filename,'r+') as file:
-            json=file.read()
+            jsons=file.read()
             var=0.1+1.9*random.random()
             stat_name="weight"
             da_stat="\""+stat_name+"\""
             pattern=da_stat+": [0-9]+[.][0-9]+"
-            reg=re.search(pattern, json)
+            reg=re.search(pattern, jsons)
             try:
                 line=reg.group(0)
                 statstring=re.search("[0-9]+[.][0-9]*", line).group(0)
                 stat_number=round(var*float(statstring),1)
                 new_line=re.sub("[0-9]+[.][0-9]*",str(stat_number),line)
-                json=json.replace(line,new_line)
+                jsons=jsons.replace(line,new_line)
             except: # pylint: disable=bare-except
                 print("Failed to mod ",stat_name," in ",filename)
                 rewrite=False
             file.close()
         if rewrite:
             with open(filename,'w') as file:
-                file.write(json)
+                file.write(jsons)
                 file.close()
 def weapon_randomize():
     """
@@ -330,8 +330,8 @@ def weapon_randomize():
     None.
 
     """
-    weapon_words=["attack_speed","damage","dmg_type","hands","hit_bonus",
-                  "parry_bonus","range","type"]
+    #weapon_words=["attack_speed","damage","dmg_type","hands","hit_bonus",
+    #              "parry_bonus","range","type"]
     list_dir=os.listdir()
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
@@ -339,7 +339,6 @@ def weapon_randomize():
     list_dir.remove('equipment.json')
     list_dir.remove('weapons.py')
     list_dir.remove('armor_classes.json')
-    counter=1
     for filename in list_dir:
         data={}
         with open(filename) as json_file:
@@ -370,13 +369,12 @@ def resis_randomize():
     list_dir.remove('equipment.json')
     list_dir.remove('weapons.py')
     list_dir.remove('armor_classes.json')
-    counter=1
     for filename in list_dir:
         data={}
         with open(filename) as json_file:
             data=json.load(json_file)
             if "armor" in data:
-                for types in res:                    
+                for types in res:
                     resmult=2*random.random()
                     resadd=random.randint(-2,2)
                     old_value=data["armor"][types]
@@ -403,7 +401,6 @@ def equip_randomize():
     list_dir.remove('equipment.json')
     list_dir.remove('weapons.py')
     list_dir.remove('armor_classes.json')
-    counter=1
     with open("armor_classes.json") as armor_json:
         armors_by_class=json.load(armor_json)
         armor_json.close()
@@ -417,7 +414,6 @@ def equip_randomize():
             data=json.load(json_file)
             if "weapon" in data:
                 hands[data["id"]]=data["weapon"]["hands"]
-    print(hands)
     for filename in list_dir:
         data={}
         with open(filename) as json_file:
@@ -429,7 +425,6 @@ def equip_randomize():
                         data["equipment"][limb]=[{}]
                 for limb in equip_words:
                     if limb=="right_hand":
-                        print(filename)
                         data["equipment"][limb][0]["chance"]=1.0
                         iden=random.choice(list(equipment["weapons"]))
                         data["equipment"][limb][0]["id"]=int(iden)
@@ -455,8 +450,10 @@ def equip_randomize():
                     elif limb == "left_hand":
                         if hands[data["equipment"]["right_hand"][0]["id"]]==1:
                             data["equipment"][limb][0]["chance"]=0.1+0.8*random.random()
-                            shields=[arm for arm in armors_by_class if armors_by_class[arm]=="left_hand"]
-                            iden=random.choice(list(equipment["weapons"])+shields+shields+shields+shields)
+                            shields=[arm for arm in armors_by_class
+                                     if armors_by_class[arm]=="left_hand"]
+                            iden=random.choice(list(equipment["weapons"])+shields
+                                               +shields+shields+shields)
                             data["equipment"][limb][0]["id"]=int(iden)
                             if iden in shields:
                                 otherlimb="armor"
@@ -466,24 +463,20 @@ def equip_randomize():
                             data["equipment"][limb][0]["stack"]=1
                         else:
                             data["equipment"].pop(limb)
-                    elif limb != "ammo" and limb != "backpack":
+                    elif limb not in ("ammo","backpack"):
                         limbfix=re.sub("[0-9]","",limb)
                         limbers=[arm for arm in armors_by_class if armors_by_class[arm]==limbfix]
                         data["equipment"][limb][0]["chance"]=0.1+0.8*random.random()
                         iden=random.choice(limbers)
                         data["equipment"][limb][0]["id"]=int(iden)
                         data["equipment"][limb][0]["name"]=equipment["armor"][iden]
-                        data["equipment"][limb][0]["stack"]=1        
+                        data["equipment"][limb][0]["stack"]=1
             json_file.close()
         with open(filename,'w') as json_file:
-            json.dump(data, json_file,indent=4)             
-                        
-                        
-
-    
+            json.dump(data, json_file,indent=4)
 damage_randomize()
-exp_randomize()       
-health_randomize()  
+exp_randomize()
+health_randomize()
 dur_randomize()
 nutr_randomize()
 liquidsources_randomize()
