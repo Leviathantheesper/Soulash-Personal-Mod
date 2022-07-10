@@ -19,9 +19,6 @@ def damage_randomize():
     list_dir=os.listdir()
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
-    list_dir.remove('equipment.py')
-    list_dir.remove('weapons.py')
-    list_dir.remove('armor_classes.json')
     counter=1
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
@@ -74,9 +71,6 @@ def exp_randomize():
     list_dir=os.listdir()
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
-    list_dir.remove('equipment.py')
-    list_dir.remove('weapons.py')
-    list_dir.remove('armor_classes.json')
     counter=1
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
@@ -115,9 +109,6 @@ def health_randomize():
     list_dir=os.listdir()
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
-    list_dir.remove('equipment.py')
-    list_dir.remove('weapons.py')
-    list_dir.remove('armor_classes.json')
     counter=1
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
@@ -156,9 +147,6 @@ def dur_randomize():
     list_dir=os.listdir()
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
-    list_dir.remove('equipment.py')
-    list_dir.remove('weapons.py')
-    list_dir.remove('armor_classes.json')
     counter=1
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
@@ -197,9 +185,6 @@ def nutr_randomize():
     list_dir=os.listdir()
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
-    list_dir.remove('equipment.py')
-    list_dir.remove('weapons.py')
-    list_dir.remove('armor_classes.json')
     counter=1
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
@@ -238,9 +223,6 @@ def liquidsources_randomize():
     list_dir=os.listdir()
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
-    list_dir.remove('equipment.py')
-    list_dir.remove('weapons.py')
-    list_dir.remove('armor_classes.json')
     counter=1
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
@@ -285,9 +267,6 @@ def weight_randomize():
     list_dir=os.listdir()
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
-    list_dir.remove('equipment.py')
-    list_dir.remove('weapons.py')
-    list_dir.remove('armor_classes.json')
     counter=1
     for filename in list_dir:
         print(str(counter)+' of '+str(len(list_dir)))
@@ -299,13 +278,13 @@ def weight_randomize():
             var=0.1+1.9*random.random()
             stat_name="weight"
             da_stat="\""+stat_name+"\""
-            pattern=da_stat+": [0-9]+[.][0-9]+"
+            pattern=da_stat+": [0-9]+"
             reg=re.search(pattern, json)
             try:
                 line=reg.group(0)
-                statstring=re.search("[0-9]+[.][0-9]*", line).group(0)
-                stat_number=round(var*float(statstring),1)
-                new_line=re.sub("[0-9]+[.][0-9]*",str(stat_number),line)
+                statstring=re.search("[0-9]+", line).group(0)
+                stat_number=int(var*int(statstring))
+                new_line=re.sub("[0-9]+",str(stat_number),line)
                 json=json.replace(line,new_line)
             except: # pylint: disable=bare-except
                 print("Failed to mod ",stat_name," in ",filename)
@@ -315,66 +294,10 @@ def weight_randomize():
             with open(filename,'w') as file:
                 file.write(json)
                 file.close()
-def weapon_randomize():
-    """
-    Randomizes weapons stats.
-    Returns
-    -------
-    None.
-
-    """
-    weapon_words=["attack_speed","damage","dmg_type","hands","hit_bonus",
-                  "parry_bonus","range","type"]
-    list_dir=os.listdir()
-    list_dir.remove('soulash_randomizer.py')
-    list_dir.remove('ids.json')
-    list_dir.remove('equipment.py')
-    list_dir.remove('weapons.py')
-    list_dir.remove('armor_classes.json')
-    counter=1
-    for filename in list_dir:
-        data={}
-        with open(filename) as json_file:
-            data=json.load(json_file)
-            if "weapon" in data:
-                spdmult=0.8*random.random()+0.6
-                new_value=round(spdmult*data["weapon"]["attack_speed"],1)
-                data["weapon"]["attack_speed"]=new_value
-                data["weapon"]["hands"]=random.randint(1,2)
-                rngmult=random.randint(1,2)
-                data["weapon"]["range"]=max(1,rngmult*data["weapon"]["range"])
-        with open(filename,'w') as json_file:
-            json.dump(data, json_file,indent=4)
-def resis_randomize():
-    """
-    Randomizes resistances.
-    Returns
-    -------
-    None.
-
-    """
-    weapon_words=["attack_speed","damage","dmg_type","hands","hit_bonus",
-                  "parry_bonus","range","type"]
-    list_dir=os.listdir()
-    list_dir.remove('soulash_randomizer.py')
-    list_dir.remove('ids.json')
-    list_dir.remove('equipment.py')
-    list_dir.remove('weapons.py')
-    list_dir.remove('armor_classes.json')
-    counter=1
-    for filename in list_dir:
-        data={}
-        with open(filename) as json_file:
-            data=json.load(json_file)
-            if "armor" in data:
-                res=["acid","death","electricity","fire","frost",
-                     "holy","parry","physical","poison"]
-                for types in res:                    
-                    resmult=2*random.random()
-                    resadd=random.randint(-2,2)
-                    old_value=data["armor"][types]
-                    new_value=max(int(resmult*old_value+resadd),0)
-                    data["armor"][types]=new_value
-        with open(filename,'w') as json_file:
-            json.dump(data, json_file,indent=4)
-resis_randomize()
+damage_randomize()
+exp_randomize()
+dur_randomize()
+nutr_randomize()
+liquidsources_randomize()
+weight_randomize()
+health_randomize()
