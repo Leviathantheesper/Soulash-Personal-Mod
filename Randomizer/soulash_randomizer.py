@@ -20,6 +20,7 @@ def damage_randomize():
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
     list_dir.remove('equipment.py')
+    list_dir.remove('equipment.json')
     list_dir.remove('weapons.py')
     list_dir.remove('armor_classes.json')
     counter=1
@@ -75,6 +76,7 @@ def exp_randomize():
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
     list_dir.remove('equipment.py')
+    list_dir.remove('equipment.json')
     list_dir.remove('weapons.py')
     list_dir.remove('armor_classes.json')
     counter=1
@@ -116,6 +118,7 @@ def health_randomize():
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
     list_dir.remove('equipment.py')
+    list_dir.remove('equipment.json')
     list_dir.remove('weapons.py')
     list_dir.remove('armor_classes.json')
     counter=1
@@ -157,6 +160,7 @@ def dur_randomize():
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
     list_dir.remove('equipment.py')
+    list_dir.remove('equipment.json')
     list_dir.remove('weapons.py')
     list_dir.remove('armor_classes.json')
     counter=1
@@ -198,6 +202,7 @@ def nutr_randomize():
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
     list_dir.remove('equipment.py')
+    list_dir.remove('equipment.json')
     list_dir.remove('weapons.py')
     list_dir.remove('armor_classes.json')
     counter=1
@@ -239,6 +244,7 @@ def liquidsources_randomize():
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
     list_dir.remove('equipment.py')
+    list_dir.remove('equipment.json')
     list_dir.remove('weapons.py')
     list_dir.remove('armor_classes.json')
     counter=1
@@ -286,6 +292,7 @@ def weight_randomize():
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
     list_dir.remove('equipment.py')
+    list_dir.remove('equipment.json')
     list_dir.remove('weapons.py')
     list_dir.remove('armor_classes.json')
     counter=1
@@ -329,6 +336,7 @@ def weapon_randomize():
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
     list_dir.remove('equipment.py')
+    list_dir.remove('equipment.json')
     list_dir.remove('weapons.py')
     list_dir.remove('armor_classes.json')
     counter=1
@@ -353,12 +361,13 @@ def resis_randomize():
     None.
 
     """
-    weapon_words=["attack_speed","damage","dmg_type","hands","hit_bonus",
-                  "parry_bonus","range","type"]
+    res=["acid","death","electricity","fire","frost",
+         "holy","parry","physical","poison"]
     list_dir=os.listdir()
     list_dir.remove('soulash_randomizer.py')
     list_dir.remove('ids.json')
     list_dir.remove('equipment.py')
+    list_dir.remove('equipment.json')
     list_dir.remove('weapons.py')
     list_dir.remove('armor_classes.json')
     counter=1
@@ -367,8 +376,6 @@ def resis_randomize():
         with open(filename) as json_file:
             data=json.load(json_file)
             if "armor" in data:
-                res=["acid","death","electricity","fire","frost",
-                     "holy","parry","physical","poison"]
                 for types in res:                    
                     resmult=2*random.random()
                     resadd=random.randint(-2,2)
@@ -377,4 +384,113 @@ def resis_randomize():
                     data["armor"][types]=new_value
         with open(filename,'w') as json_file:
             json.dump(data, json_file,indent=4)
+def equip_randomize():
+    """
+    Randomizes entity equipment.
+    Returns
+    -------
+    None.
+
+    """
+    equip_words=["right_hand","ammo","amulet","backpack","belt","boots",
+                  "cape","gloves","head_armor","head_cloth","left_hand",
+                  "legs_armor","legs_cloth","ring1","ring2","torso_armor",
+                  "torso_cloth"]
+    list_dir=os.listdir()
+    list_dir.remove('soulash_randomizer.py')
+    list_dir.remove('ids.json')
+    list_dir.remove('equipment.py')
+    list_dir.remove('equipment.json')
+    list_dir.remove('weapons.py')
+    list_dir.remove('armor_classes.json')
+    counter=1
+    with open("armor_classes.json") as armor_json:
+        armors_by_class=json.load(armor_json)
+        armor_json.close()
+    with open("equipment.json") as equipment_json:
+        equipment=json.load(equipment_json)
+        equipment_json.close()
+    hands={}
+    for filename in list_dir:
+        data={}
+        with open(filename) as json_file:
+            data=json.load(json_file)
+            if "weapon" in data:
+                hands[data["id"]]=data["weapon"]["hands"]
+    print(hands)
+    for filename in list_dir:
+        data={}
+        with open(filename) as json_file:
+            data=json.load(json_file)
+            if "equipment" in data:
+                data["equipment"]["ammo"]={}
+                for limb in equip_words:
+                    if limb != "backpack":
+                        data["equipment"][limb]=[{}]
+                for limb in equip_words:
+                    if limb=="right_hand":
+                        print(filename)
+                        data["equipment"][limb][0]["chance"]=1.0
+                        iden=random.choice(list(equipment["weapons"]))
+                        data["equipment"][limb][0]["id"]=int(iden)
+                        data["equipment"][limb][0]["name"]=equipment["weapons"][iden]
+                        data["equipment"][limb][0]["stack"]=1
+                        if re.search("crossbow",equipment["weapons"][iden],re.IGNORECASE):
+                            data["equipment"]["ammo"][0]["chance"]=1.0
+                            data["equipment"]["ammo"][0]["id"]=234
+                            data["equipment"]["ammo"][0]["name"]="Bolt"
+                            data["equipment"]["ammo"][0]["stack"]=random.randint(3,40)
+                        elif re.search("bow",equipment["weapons"][iden],re.IGNORECASE):
+                            data["equipment"]["ammo"][0]["chance"]=1.0
+                            arrow_choice=random.choice(["194","857"])
+                            data["equipment"]["ammo"][0]["id"]=int(arrow_choice)
+                            data["equipment"]["ammo"][0]["name"]=equipment["ammo"][arrow_choice]
+                            data["equipment"]["ammo"][0]["stack"]=random.randint(3,40)
+                        else:
+                            data["equipment"]["ammo"][0]["chance"]=0.1
+                            arrow_choice=random.choice(["194","857","234"])
+                            data["equipment"]["ammo"][0]["id"]=int(arrow_choice)
+                            data["equipment"]["ammo"][0]["name"]=equipment["ammo"][arrow_choice]
+                            data["equipment"]["ammo"][0]["stack"]=random.randint(1,3)
+                    elif limb == "left_hand":
+                        if hands[data["equipment"]["right_hand"][0]["id"]]==1:
+                            data["equipment"][limb][0]["chance"]=0.1+0.8*random.random()
+                            shields=[arm for arm in armors_by_class if armors_by_class[arm]=="left_hand"]
+                            iden=random.choice(list(equipment["weapons"])+shields+shields+shields+shields)
+                            data["equipment"][limb][0]["id"]=int(iden)
+                            if iden in shields:
+                                otherlimb="armor"
+                            else:
+                                otherlimb="weapons"
+                            data["equipment"][limb][0]["name"]=equipment[otherlimb][iden]
+                            data["equipment"][limb][0]["stack"]=1
+                        else:
+                            data["equipment"].pop(limb)
+                    elif limb != "ammo" and limb != "backpack":
+                        limbfix=re.sub("[0-9]","",limb)
+                        limbers=[arm for arm in armors_by_class if armors_by_class[arm]==limbfix]
+                        data["equipment"][limb][0]["chance"]=0.1+0.8*random.random()
+                        iden=random.choice(limbers)
+                        data["equipment"][limb][0]["id"]=int(iden)
+                        data["equipment"][limb][0]["name"]=equipment["armor"][iden]
+                        data["equipment"][limb][0]["stack"]=1        
+            json_file.close()
+        with open(filename,'w') as json_file:
+            json.dump(data, json_file,indent=4)             
+                        
+                        
+
+    
+damage_randomize()
+exp_randomize()       
+health_randomize()  
+dur_randomize()
+nutr_randomize()
+liquidsources_randomize()
+weight_randomize()
+weapon_randomize()
 resis_randomize()
+equip_randomize()
+        #with open(filename,'w') as json_file:
+        #    json.dump(data, json_file,indent=4)
+    
