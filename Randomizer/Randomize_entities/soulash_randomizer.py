@@ -31,15 +31,17 @@ def damage_randomize():
         rewrite=True
         with open(filename,'r+') as file:
             jsons=file.read()
-            var=10*random.random()
+            var=0.5+3.5*random.random()
             stat_name="dmg_max"
             da_stat="\""+stat_name+"\""
             pattern=da_stat+": [0-9]+"
             reg=re.search(pattern, jsons)
+            dmgmaxcopy=0
             try:
                 line=reg.group(0)
                 statstring=re.search("[0-9]+", line).group(0)
                 stat_number=int(var*int(statstring))
+                dmgmaxcopy=stat_number
                 new_line=re.sub("[0-9]+",str(stat_number),line)
                 jsons=jsons.replace(line,new_line)
             except: # pylint: disable=bare-except
@@ -53,7 +55,7 @@ def damage_randomize():
             try:
                 line=reg.group(0)
                 statstring=re.search("[0-9]+", line).group(0)
-                stat_number=int(var*int(statstring))
+                stat_number=max(int(var*(int(statstring)+dmgmaxcopy/4)),int(dmgmaxcopy/2))
                 new_line=re.sub("[0-9]+",str(stat_number),line)
                 jsons=jsons.replace(line,new_line)
             except: # pylint: disable=bare-except
@@ -87,7 +89,7 @@ def exp_randomize():
         rewrite=True
         with open(filename,'r+') as file:
             jsons=file.read()
-            var=0.5+4.5*random.random()
+            var=0.5+6.5*random.random()
             stat_name="exp"
             da_stat="\""+stat_name+"\""
             pattern=da_stat+": [0-9]+"
@@ -129,7 +131,7 @@ def health_randomize():
         rewrite=True
         with open(filename,'r+') as file:
             jsons=file.read()
-            var=0.5+7.5*random.random()
+            var=0.2+3.8*random.random()
             stat_name="health"
             da_stat="\""+stat_name+"\""
             pattern=da_stat+": [0-9]+"
